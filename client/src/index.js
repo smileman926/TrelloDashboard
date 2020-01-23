@@ -22,7 +22,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk,logger)));
 
 const httpLink = createHttpLink({
-	uri: 'http://localhost:3000/graphql'
+	uri: '/graphql'
 });
 
 const cache = new InMemoryCache();

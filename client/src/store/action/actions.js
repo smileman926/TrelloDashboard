@@ -23,7 +23,7 @@ export const registerUser = (userData, history) => {
 	return  dispatch => {
 
 	axios
-		.post("http://localhost:3000/api/users/register", userData)
+		.post("/api/users/register", userData)
 		// .then(()=>console.log("ok"))
 		.then(res=> history.push("/login"))
 		.catch(err=>
@@ -39,14 +39,14 @@ export const registerUser = (userData, history) => {
 }
 export const googleUser = ()=> {
 	return dispatch=>{
-		axios.get("http://localhost:3000/auth/google");
+		axios.get("/auth/google");
 	}
 	
 }
 export const loginUser = (userData) => {
 	return dispatch => {
 	axios
-		.post("http://localhost:3000/api/users/login", userData)
+		.post("/api/users/login", userData)
 		.then(res=>{
 			const {token} = res.data;
 			localStorage.setItem("jwtToken", token);
