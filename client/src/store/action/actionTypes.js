@@ -1,0 +1,12 @@
+export const getPageDatas = "getPageDatas";
+export const registerSuccess = "registerSuccess";
+export const SET_CURRENT_USER = "SET_CURRENT_USER";
+export const GET_ERRORS="GET_ERRORS";
+export const TOGGLE_SIDEBAR = "TOGGLE_SIDEBAR";
+export const ADD_RECENT = "ADD_RECENT";
+export const ADD_STAR = "ADD_STAR";
+export const REMOVE_RECENT = "REMOVE_RECENT";
+export const REMOVE_STAR = "REMOVE_STAR";
+export const ADD_INFO = "ADD_INFO";
+export const ADD_LIST = "ADD_LIST";
+export const ADD_CONTENT = "ADD_CONTENT";

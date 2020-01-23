@@ -1,0 +1,12 @@
+.main_board {
+background: url('https://raw.githubusercontent.com/Anthony-genius/WebDreamTrelloAssets/master/trello-theme-img/theme6.jpg') no-repeat center center fixed; 
+background-size: cover;
+}
+.boardbar_div {
+	position: relative;
+	height: 50px;
+	padding: 5px 10px;
+	background-color: rgba(244,244,244,.4);
+	align-items: center;
+}
+

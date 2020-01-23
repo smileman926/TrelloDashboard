@@ -1,0 +1,95 @@
+
+.navbar {
+	padding: 0;
+	background-color: #026aa7;
+}
+
+.nav_btn {
+	background-color: hsla(0,0%,100%,.3);
+	border: none;
+	height: 35px;
+	margin: 3px;
+	color: white;
+	min-width: 35px;
+	border-radius: 3px;
+	line-height: 20px;
+
+}
+
+
+.nav_btn:hover {
+	background-color: rgba(0,0,0,0.4);
+	border: none;
+	height: 35px;
+	margin: 3px;
+}
+.btn-search {
+	background-color: hsla(0,0%,100%,.3);
+	height: 35px;
+	margin: 3px 0;
+	outline: none;
+}
+.trello-logo {
+	width: 100px;
+	height: 50px;
+}
+.navsearch {
+	background-color: hsla(0,0%,100%,.3);
+    border-bottom-left-radius: 3px;
+    border-top-left-radius: 3px;
+    border: none;
+    box-shadow: none;
+    box-sizing: border-box;
+    color: hsla(0,0%,100%,.5);
+    float: left;
+    font-size: 13px;
+    min-height: 35px;
+    line-height: 20px;
+    margin: 3px 0;
+    outline: none;
+    padding: 3px 8px;
+    transition: all .15s;
+    max-width: 180px;
+}
+.searchBtn {
+	transform: translateY(-3px);
+}
+.customSearch:active .btn-search {
+	background-color: white;
+	
+}
+.navsearch:focus {
+	background-color: white;
+	color: black;
+    padding-left: 8px;
+    padding-right: 50px;
+    transition: all .15s;
+    max-width: 250px;
+}
+.trello-logo {
+	position: absolute;
+	left: 50%;
+	top: 0;
+	transform: translateY(-5px);
+}
+.right {
+	display: flex;
+	position: absolute;
+	right: 1vw;
+	top: 0;
+	float: right;
+	align-items: center;
+}
+.circle {
+	border-radius: 50%;
+}
+.dropdown-toggle:after {
+	display: none;
+}
+.dropdown-menu {
+	box-sizing: border-box;
+	position: fixed;
+	right: 0;
+	max-width: 350px;
+	width: 350px;
+}

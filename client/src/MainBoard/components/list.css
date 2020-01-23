@@ -1,0 +1,164 @@
+.in_list_div {
+	position: relative;
+	width: 280px;
+	height: auto;
+	padding: 10px;
+	background-color: white;
+	margin: 5px;
+    border-radius: 3px;
+
+}
+
+.in_list_div:hover {
+	background-color: #f9f9f9;
+}
+
+.list_div {
+	background-color: #ebecf0;
+    border-radius: 3px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    max-height: 100%;
+    position: relative;
+    white-space: normal;
+    width: 300px;
+    margin: 10px 10px auto 10px;
+    padding:10px;
+	align-items: center;
+}
+
+.list_title_div {
+	position: relative;
+	width: 280px;
+	height: 30px;
+	padding: 0px 10px;
+	margin: 5px;
+    border-radius: 3px;
+    background-color: #ebecf0;
+    border: none;
+}
+
+.list_title_div:focus {
+    background-color: white;
+    border: 1px solid blue;
+}
+
+.list_container_div {
+	display: flex;
+	/*flex-wrap: wrap;*/
+}
+
+.board_addListDiv {
+	display: flex;
+	width: 300px;
+	height: auto;
+	font-weight: bold;
+	padding: 10px 20px;
+	font-size: 15px;
+	background-color: rgba(0,0,0,0.1);
+	transition: 0.4s;
+	border-radius: 5px;
+	margin: 10px 10px auto 10px;
+}
+
+.board_addListDiv--title {
+	width: 270px;
+	margin: 0px;
+	padding: auto;
+	color: white;
+	font-weight: bold;
+}
+
+.board_addListDiv--input {
+	background-color: white;
+	border: 2px solid blue;
+	outline: none;
+	height: 38px;
+	width: 260px;
+	border-radius: 3px;
+	padding-left: 15px;
+}
+
+.board_addListDiv--button {
+	border: none;
+	background-color: #5aac44;
+	border-radius: 3px;
+	font-weight: bold;
+	font-size: 15px;
+	padding: 5px 12px;
+	margin: 5px;
+	color: white;
+}
+
+.board_addCardDiv {
+	width: 280px;
+	margin-top: 8px;
+}
+
+.board_addCardDiv--title {
+	margin: 0px;
+	padding: auto;
+	color: grey;
+	font-weight: bold;
+}
+
+.board_addCardDiv--input {
+	background-color: white;
+	border: 2px solid blue;
+	outline: none;
+	height: 80px;
+	width: 280px;
+	border-radius: 3px;
+	padding-left: 15px;
+}
+
+.board_addCardDiv--button {
+	border: none;
+	background-color: #5aac44;
+	border-radius: 3px;
+	font-weight: bold;
+	font-size: 15px;
+	padding: 5px 12px;
+	margin: 5px;
+	color: white;
+}
+
+.mainbody_div {
+	display: flex;
+    overflow-x: scroll;
+    height: 83vh;
+}
+
+.list_content {
+	background-color: white;
+	box-shadow: 0px 0px 3px 3px rgba(0,0,0,0.1);
+	display: flex;
+    width: 280px;
+    height: 35px;
+    border-radius: 3px;
+    margin: 3px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.list_content:hover {
+	background-color: rgba(0,0,0,0.02);
+}
+
+.list_content:hover .list_content--pen{
+	display: block;
+}
+
+.list_content--title {
+    width: 230px;
+    overflow: hidden;
+    float: right;
+    margin-right: 30px;
+}
+
+.list_content--pen {
+	width: 20px;
+	float: right;
+	display: none;
+}

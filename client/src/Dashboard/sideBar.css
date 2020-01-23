@@ -1,0 +1,60 @@
+.MuiDrawer-paper {
+	
+	margin-top: 50px;
+	width: 250px;
+	max-width: 350px;
+}
+.sideBar {
+	overflow-y: scroll;
+}
+.sideBar > div {
+	overflow: hidden;
+}
+[id*="-board"] {
+	margin: 5px;
+	color: grey;
+}
+.item-desc {
+	line-height: 24px;
+}
+.item-desc .optional-btn {
+	float: right;
+}
+.ite.-desc span {
+	padding-left: 7px;
+}
+#star p {
+	padding: 15px;
+}
+.mini-board:hover {
+	opacity: .7;
+}
+.mini-board:hover .icon-group {
+	right:20px;
+}
+.mini-board {
+	background-color: lightgreen;
+	height: 50px;
+	margin: 10px;
+	
+}
+.mini-board .square {
+	width: 50px;
+	height: 50px;
+	background-color: green;
+	float: left;
+}
+.mini-board .back-board {
+	height: 50px;
+	background-color: lightgreen;
+
+}
+.mini-board .icon-group {
+	position: absolute;
+	right: -40px;
+	transition: right .3s;
+	
+}
+.link-board p {
+	padding: 3px 7px;
+}

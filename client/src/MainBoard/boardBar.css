@@ -1,0 +1,8 @@
+.boardbar_div {
+	display: flex;
+	position: relative;
+	height: 50px;
+	padding: 5px 10px;
+	background-color: rgba(244,244,244,.4);
+	align-items: center;
+}
