@@ -1,9 +1,9 @@
 var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://localhost:27017/";
+var url = "mongodb://uim1gczxep9hv8lpgrn0:7IC9RrIIFgoiy3vQu4Aa@boceabjdflttdoe-mongodb.services.clever-cloud.com:27017/boceabjdflttdoe";
 
 MongoClient.connect(url, function(err, db) {
   if (err) throw err;
-  var dbo = db.db("webdream");
+  var dbo = db.db("boceabjdflttdoe");
   var myobj = [
     { 
       title: 'New Test Automation Development Project', 

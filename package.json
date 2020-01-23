@@ -28,8 +28,9 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build",
-    "start" : "node app.js"
+    "heroku-postbuild": "npm run fixture && cd client && npm install --only=dev && npm install && npm run build",
+    "start" : "node app.js",
+    "fixture": "cd migration && node boards.js && node pureBoards.js && cd .."
   },
   "repository": {
     "type": "git",

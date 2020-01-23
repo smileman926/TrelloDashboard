@@ -35,7 +35,7 @@ app.use(express.static(path.join(__dirname, "client", "build")))
 const google = require('./routes/api/google');
 
 //Configure mongoose
-mongoose.connect('mongodb://localhost/webdream', {useNewUrlParser:true});
+mongoose.connect('mongodb://uim1gczxep9hv8lpgrn0:7IC9RrIIFgoiy3vQu4Aa@boceabjdflttdoe-mongodb.services.clever-cloud.com:27017/boceabjdflttdoe', {useNewUrlParser:true});
 mongoose.set('debug', true);
 
 // app.use(require('express-session')({
