@@ -5,6 +5,7 @@ import isEmail from "validator/lib/isEmail";
 // import ReactPasswordStrength from "react-password-strength";
 import {connect} from "react-redux";
 import {registerUser} from "../../store/action/actions";
+import Notifications, {notify} from 'react-notify-toast';
 
 class SignUp extends React.Component {
 	constructor() {
@@ -15,7 +16,8 @@ class SignUp extends React.Component {
 			name: "",
 			email: "",
 			Password: "",
-			errors: {}
+			errors: {},
+			sendingEmail: false
 		}
 
 	}
@@ -28,8 +30,15 @@ class SignUp extends React.Component {
 	componentWillReceiveProps(nextProps) {
     if (nextProps.errors) {
       this.setState({
-        errors: nextProps.errors
+        errors: nextProps.errors,
+        sendingEmail: false
       });
+    }
+    if (nextProps.auth.message) {
+    	this.setState({
+    		sendingEmail: false
+    	})
+    	notify.show(nextProps.auth.message)
     }
   }
 	handleClick = () => this.setState({
@@ -45,6 +54,9 @@ class SignUp extends React.Component {
 	
 	onSubmit = (e) => {
 		e.preventDefault();
+		this.setState({
+			sendingEmail: true
+		})
 		const newUser = {
 			name: this.state.name,
 			email: this.state.email,
@@ -66,7 +78,7 @@ class SignUp extends React.Component {
 			"Help",
 			"Cookie Settings"
 			];
-
+		const sendingEmail_flag = this.state.sendingEmail
 		const str = this.state.pwd_flag;
 		const list = lists.map((item,i) =>
   		<li key={i}><a href="#">{item}</a></li>
@@ -82,7 +94,7 @@ class SignUp extends React.Component {
 							<span className="text-danger">{errors.password}</span>
 							</div>
 							<div className="form-group">
-							<input type="submit" className="btn btn-success btn-block" value="Sign Up" />
+							<button type="submit" className="btn btn-success btn-block" >{ sendingEmail_flag ? <span className="spinner-border spinner-border-sm"></span> : <span>Sign up</span>}</button>
 							</div>
 							</div>)
 				}
@@ -96,6 +108,7 @@ class SignUp extends React.Component {
 		}
 		return(
 			<div>
+			<Notifications />
 			<section id="signup">
 				<img alt="Trello" className="trello-main-logo" src="https://d2k1ftgv7pobq7.cloudfront.net/meta/c/p/res/images/trello-header-logos/76ceb1faa939ede03abacb6efacdde16/trello-logo-blue.svg" />
 				

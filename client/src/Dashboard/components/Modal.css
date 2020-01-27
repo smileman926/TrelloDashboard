@@ -192,3 +192,10 @@
 	border: none;
 	box-shadow: inset 0 0 0 2px #dfe1e6;
 }
+.modal-content {
+	border: none;
+	background-color: transparent;
+}
+.modal-footer {
+	border-top: none;
+}

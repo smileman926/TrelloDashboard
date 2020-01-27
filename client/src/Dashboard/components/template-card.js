@@ -10,9 +10,11 @@ import "./board-card.css";
 import {Link} from "react-router-dom";
 
 const Card = styled.div`
+    width: 260px;
+    height: 132px;
     position: relative;
-    border-radius: 4px;
-    height: 90px;
+    border-radius: 3px;
+
     text-align: center;
     overflow: hidden;
     &:hover {
@@ -30,7 +32,7 @@ const CardTitle = styled.div`
     text-overflow: ellipsis;
     font-size: 16px;
     font-weight: 700;
-    color: white;
+    color: black;
 `
 const IconStar = styled.div`
     display: contents;
@@ -49,6 +51,12 @@ const CardAuthor = styled.p`
 
 `
 const SymbolImg = styled.img`
+    width: 48px;
+    height: 48px;
+    line-height: 48px;
+    border: 3px solid white;
+    box-shadow: 0 1px 1px rgba(9,45,66,.25);
+    background-color: white;
     position: relative;
     left: 15px;
     top: -30px;
@@ -57,19 +65,19 @@ const SymbolImg = styled.img`
 
 export default function BoardCard(props) {
     
-    const {_id, backgroundImageUrl, isTemplate, templateType,author, brief, symbolIconUrl, title, linkUrl} = props
+    const {linkImg, avatar, title, auth, about, radius, templateType} = props
     
     return (
-        <div>
-            <Link to={`/${templateType}/${_id}`}>
-                <Card style={{height: '150px', backgroundImage: `url(${backgroundImageUrl})`, backgroundSize: '100% 100%'}}>
+        <div style={{"max-width": "260px"}}>
+            <Link to={`/${templateType}/${title}`}>
+                <Card style={{height: '150px', backgroundImage: `url(${linkImg})`, backgroundSize: '100% 100%'}}>
                     
                 </Card>
-                <SymbolImg className="symbol_img" src={`${symbolIconUrl}`} alt="symbol" />
+                <SymbolImg className="symbol_img" src={`${avatar}`} alt="symbol" style={{"border-radius": `${radius}`}}/>
             </Link>
             <CardTitle>{title}</CardTitle>
-            <CardAuthor>{author}</CardAuthor>
-            <p>{brief}</p>
+            <CardAuthor>{auth}</CardAuthor>
+            <p>{about}</p>
         </div>
        
     )

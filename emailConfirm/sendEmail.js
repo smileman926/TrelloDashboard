@@ -12,12 +12,15 @@ const credentials = {
     // tls: {
     //    ciphers:"SSLv3"
     // },
-    host: "smtp-mail.outlook.com", // hostname
-    secureConnection: false, // TLS requires secureConnection to be false
-    port: 587, // port for secure SMTP
-    tls: {
-       ciphers:"SSLv3"
-    },
+    // host: "smtp-mail.outlook.com", // hostname
+    // secureConnection: false, // TLS requires secureConnection to be false
+    // port: 587, // port for secure SMTP
+    // tls: {
+    //    ciphers:"SSLv3"
+    // },
+  host: 'smtp.gmail.com',
+  port: 465,
+  secure: true,
   auth: {
     // These environment variables will be pulled from the .env file
     user: process.env.MAIL_USER, 
@@ -39,6 +42,8 @@ const credentials = {
 // as the return value of this function.
 module.exports = async (to, content) => {
   console.log("======================")
+  console.log(process.env.MAIL_USER)
+  console.log(process.env.MAIL_PASS)
   // The from and to addresses for the email that is about to be sent.
   const contacts = {
     from: process.env.MAIL_USER,

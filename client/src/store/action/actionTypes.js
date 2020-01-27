@@ -10,3 +10,4 @@ export const REMOVE_STAR = "REMOVE_STAR";
 export const ADD_INFO = "ADD_INFO";
 export const ADD_LIST = "ADD_LIST";
 export const ADD_CONTENT = "ADD_CONTENT";
+export const GET_MSG = "GET_MSG";

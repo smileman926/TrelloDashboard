@@ -18,11 +18,13 @@ import { ApolloClient } from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
 import { createHttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
+import { SERVER_PORT } from "./config"
+import store from "./store"
 
-const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk,logger)));
+// const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk,logger)));
 
 const httpLink = createHttpLink({
-	uri: '/graphql'
+	uri: `${SERVER_PORT}/graphql`
 });
 
 const cache = new InMemoryCache();
@@ -44,7 +46,7 @@ const app = (
 	<ApolloProvider client={client}>
 	<Provider store={store}>
 		<Router>
-			<App />
+			<App/>
 		</Router>
 	</Provider>
 	</ApolloProvider>

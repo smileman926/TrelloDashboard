@@ -54,10 +54,10 @@
 .searchBtn {
 	transform: translateY(-3px);
 }
-.customSearch:active .btn-search {
+/*.customSearch:active .btn-search {
 	background-color: white;
 	
-}
+}*/
 .navsearch:focus {
 	background-color: white;
 	color: black;

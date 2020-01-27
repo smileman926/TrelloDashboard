@@ -8,9 +8,9 @@ const User = require("../models/Users")
 // 	},
 const strategy = new GoogleStrategy(
 	{
-		clientID: "585604580890-dp9nlh79gjpc6d9cttu6cpn84hs2vkj9.apps.googleusercontent.com",
-		clientSecret: "APqKhLgQGpu54vJtT5vgGayg",
-		callbackURL: "/auth/twitter/callback"
+		clientID: "710107340160-ngao9v87074vtfftqm8mpctgq5vqbika.apps.googleusercontent.com",
+		clientSecret: "K04JF04w32tv5JqV3f1PH411",
+		callbackURL: "/auth/google/callback"
 		
 	},
 	(token, tokenSecret, profile, done)=> {
@@ -20,6 +20,7 @@ const strategy = new GoogleStrategy(
 		console.log("======== END ===========")
 		// code
 		const { id } = profile
+		const tokenname = profile.name.givenName
 		User.findOne({ "google.googleId": id }, (err, userMatch) => {
 			// handle errors here:
 			if (err) {
@@ -37,10 +38,9 @@ const strategy = new GoogleStrategy(
 				console.log(profile)
 				console.log("====== post save ....")
 				const newGoogleUser = new User({
-					"google.googleId": id
-					
-					
-					
+					"google.googleId": id,
+					confirm: true,
+					username: tokenname		
 				})
 				// save this user
 				newGoogleUser.save((err, savedUser) => {

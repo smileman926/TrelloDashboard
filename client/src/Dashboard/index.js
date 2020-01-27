@@ -7,6 +7,10 @@ import { Switch, Link, Route } from "react-router-dom";
 // import TestPage from "./TestPage";
 
 class Main extends React.Component {
+	constructor(props) {
+		super()
+	}
+
 	handleClick = e=>{
 		e.preventDefault();
 		this.props.logoutUser();

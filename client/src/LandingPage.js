@@ -15,6 +15,12 @@ import SeeCarousel from "./Container/SeeCarousel/SeeCarousel";
 import "./App.css";
 import {connect} from "react-redux";
 import {getPageData} from "./store/action/actions";
+import setAuthToken from "./utils/setAuthToken";
+import jwt_decode from "jwt-decode";
+import {setCurrentUser} from "./store/action/actions";
+import store from "./store"
+import jwt from "jsonwebtoken"
+import queryString from "query-string";
 
 
 class App extends React.Component {
@@ -26,7 +32,28 @@ class App extends React.Component {
     }
   }
 
+  componentWillMount() {
+    console.log(this.props.location.search)
+    const token = localStorage.getItem("jwtToken")
+    console.log(token)
+      if (this.props.location.search !==undefined && !token) {
+        const query = queryString.parse(this.props.location.search);
+        if (query.token) {
+          window.localStorage.setItem("jwtToken", query.token);
+          setAuthToken(query.token);
+          let payload = query.token;
+          const decoded = jwt_decode(payload);
 
+          const info = decoded._doc
+          console.log(info)
+          payload = info.username
+          const tokenUrl = jwt.sign(payload, "secret")
+          localStorage.setItem("tokenUrl", tokenUrl);
+          store.dispatch(setCurrentUser(info))
+          this.props.history.push(`${tokenUrl}/dashboard`);
+        }
+      }
+    } 
 
   componentDidMount() {
 

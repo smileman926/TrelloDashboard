@@ -1,0 +1,54 @@
+[
+	{
+		"title":"Business",
+		"templateImgPosition":"-162px -756px"
+	},
+	{
+		"title":"Design",
+		"templateImgPosition":"-162px -132px"
+	},
+	{
+		"title":"Education",
+		"templateImgPosition":"-162px -236px"
+	},
+	{
+		"title":"Engineering",
+		"templateImgPosition":"-162px -1276px"
+	},
+	{
+		"title":"Marketing",
+		"templateImgPosition":"-162px -1172px"
+	},
+	{
+		"title":"HR & Operations",
+		"templateImgPosition":"-162px -340px"
+	},
+	{
+		"title":"Personal",
+		"templateImgPosition":"-162px -28px"
+	},
+	{
+		"title":"Productivity",
+		"templateImgPosition":"-162px -1068px"
+	},
+	{
+		"title":"Product Management",
+		"templateImgPosition":"-162px -860px"
+	},
+	{
+		"title":"Project Management",
+		"templateImgPosition":"-162px -652px"
+	},
+	{
+		"title":"Sales",
+		"templateImgPosition":"-162px -964px"
+	},
+	{
+		"title":"Support",
+		"templateImgPosition":"-162px -548px"
+	},
+	{
+		"title":"Team Management",
+		"templateImgPosition":"-162px -444px"
+	}
+]

@@ -6,30 +6,32 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
+    "browser-storage": "0.0.2",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
-    "express-graphql": "^0.9.0",
-    "graphql-date": "^1.0.3",
-    "graphql": "^14.5.8",
-    "is-empty": "^1.2.0",
     "express": "^4.17.1",
+    "express-graphql": "^0.9.0",
+    "graphql": "^14.5.8",
+    "graphql-date": "^1.0.3",
+    "is-empty": "^1.2.0",
+    "localStorage": "^1.0.4",
     "mongoose": "^5.8.4",
     "nodemailer": "^6.4.2",
     "nodemon": "^2.0.2",
     "passport": "^0.4.1",
-    "passport-jwt": "^4.0.0",
     "passport-google-oauth": "^2.0.0",
+    "passport-jwt": "^4.0.0",
     "passport-local-mongoose": "^6.0.1",
     "validator": "^12.1.0"
   },
-  "engines":{
-    "node":"10.16.2"
-   },
+  "engines": {
+    "node": "10.16.2"
+  },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "heroku-postbuild": "npm run fixture && cd client && npm install --only=dev && npm install && npm run build",
-    "start" : "node app.js",
+    "start": "node app.js",
     "fixture": "cd migration && node boards.js && node pureBoards.js && cd .."
   },
   "repository": {

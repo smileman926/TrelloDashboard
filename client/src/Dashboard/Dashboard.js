@@ -19,7 +19,7 @@ class Dashboard extends React.Component {
 		const tokenUrl = localStorage.getItem("tokenUrl")
 		const {user} = this.props;
 		const {open} = this.props;
-		  const templateListItems = ['Business', 'Design', 'Education', 'Engineering', 'Marketing', 'HR & Operation',
+		  const templateListItems = ['Business', 'Design', 'Education', 'Engineering', 'Marketing', 'HR & Operations',
                              'Personal', 'Productivity', 'Product Management', 'Project Management', 'Sales',
                              'Support', 'Team Management'];
 		return(

@@ -3,6 +3,7 @@ import axios from "axios";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "../../utils/setAuthToken";
 import jwt from "jsonwebtoken";
+import { SERVER_PORT } from "../../config"
 
 
 export const getPageData = () => {
@@ -23,9 +24,15 @@ export const registerUser = (userData, history) => {
 	return  dispatch => {
 
 	axios
-		.post("/api/users/register", userData)
+		.post(`${SERVER_PORT}/api/users/register`, userData)
 		// .then(()=>console.log("ok"))
-		.then(res=> history.push("/login"))
+		// .then(res=> history.push("/login"))
+		.then(res=> 
+			dispatch({
+				type: actionTypes.GET_MSG,
+				payload: res.data.msg
+			})
+			)
 		.catch(err=>
 			dispatch({
 				type:actionTypes.GET_ERRORS,
@@ -38,15 +45,25 @@ export const registerUser = (userData, history) => {
 	}
 }
 export const googleUser = ()=> {
+	const config = {
+		headers: {
+			'Access-Control-Allow-Origin': "http://localhost:3000"
+		}
+	}
 	return dispatch=>{
-		axios.get("/auth/google");
+		fetch(`${SERVER_PORT}/auth/google/sign`, {
+			headers: { "Content-Type": "application/json; charset=utf-8" },
+  			method: 'GET'
+		})
+		.then(res=>console.log("okkk===>"))
+		// axios.get(`${SERVER_PORT}/auth/google/sign`);
 	}
 	
 }
 export const loginUser = (userData) => {
 	return dispatch => {
 	axios
-		.post("/api/users/login", userData)
+		.post(`${SERVER_PORT}/api/users/login`, userData)
 		.then(res=>{
 			const {token} = res.data;
 			localStorage.setItem("jwtToken", token);
@@ -64,7 +81,7 @@ export const loginUser = (userData) => {
 				type:actionTypes.GET_ERRORS,
 				payload: err.response.data
 			})
-			);
+			);	
 	}
 }
 export const setCurrentUser = decoded=> {

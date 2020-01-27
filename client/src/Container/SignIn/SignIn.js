@@ -4,6 +4,7 @@ import {connect} from "react-redux";
 import {loginUser} from "../../store/action/actions";
 import {googleUser} from "../../store/action/actions";
 import jwt from "jsonwebtoken";
+import {SERVER_PORT} from "../../config"
 
 class SignIn extends React.Component {
 	constructor() {
@@ -111,6 +112,7 @@ class SignIn extends React.Component {
 				<div className="card">
 					<div className="card-body">
 						<h4 className="card-title">Lonin to Trello</h4>
+						<p>{errors.unconfirmMsg}</p>
 						<form onSubmit={this.handleSubmit}>
 							<div className="form-group">
 							  <input type="text" className="form-control" id="email" placeholder="Email" onChange={this.onChange}/>
@@ -128,7 +130,8 @@ class SignIn extends React.Component {
 							
 							<button type="submit" className="btn btn-success btn-block" value="Login" onClick={this.effectClick}>{this.state.btnval}</button>
 							<p className="text-center">OR</p>
-							<a href="http://localhost:3000/auth/google" type="button" className="btn btn-outline-dark btn-block">Continue With Google</a>
+ 							<a type="button" href={`${SERVER_PORT}/auth/google/sign`} className="btn btn-outline-dark btn-block">Continue With Google</a>
+
 						</form>
 						<hr />
 						<p><a href="#">Can"t log in?</a>&nbsp;<a href="/signup">Sign up for an account</a></p>
@@ -202,3 +205,6 @@ const mapDispatchToProps = dispatch=>{
 	}
 }
 export default connect(mapStateToProps, mapDispatchToProps)(SignIn);
+
+//<button type="button" className="btn btn-outline-dark btn-block" onClick={this.googleClick}>Continue With Google</button>
+// 							<a type="button" href={`${SERVER_PORT}/auth/google/sign`} className="btn btn-outline-dark btn-block">Continue With Google</a>

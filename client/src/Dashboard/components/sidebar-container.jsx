@@ -40,7 +40,7 @@ export default function DashboardSidebar() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
-  const templateListItems = ['Business', 'Design', 'Education', 'Engineering', 'Marketing', 'HR & Operation',
+  const templateListItems = ['Business', 'Design', 'Education', 'Engineering', 'Marketing', 'HR & Operations',
                              'Personal', 'Productivity', 'Product Management', 'Project Management', 'Sales',
                              'Support', 'Team Management']
 

@@ -30,60 +30,6 @@ const sendEmail = require("../../emailConfirm/sendEmail")
 // 		failureRedirect: "/",
 // 		failureFlash: true
 // }));
-router.post("/register", (req,res)=>{
-	
-	const { errors, isValid } = validateRegisterInput(req.body);
-	if (!isValid) {
-    return res.status(400).json(errors);
-  	}
-
-
-				
-	User.findOne({ "local.username": req.body.name })
-		.then(user=>{
-			if (!user) {
-				
-				
-				const newUser = new User({
-					"local.password": req.body.password,
-			        "local.useremail": req.body.email,
-			        username: req.body.name,
-			        
-				});
-				
-				newUser
-					.save()
-					
-					
-					//.then(user=>sendEmail(user.local.useremail, templates.confirmed(user._id)))
-					
-					.then(user=>res.json(user))
-					//.then(()=>res.json({msg:messages.confirm}))
-					.catch(err=>res.json(err));
-		        // User.create({ email })
-		        //   .then(newUser => sendEmail(newUser.email, templates.confirm(newUser._id)))
-		        //   .then(() => res.json({ msg: msgs.confirm }))
-		        //   .catch(err => console.log(err))
-		      }
-		    else if (user && !user.confrim) {
-		    	sendEmail(user.local.email, templates.confirm(user._id))
-		    	.then(()=>res.json({msg: messages.resend}))
-		    }
-			else { return res.status(400).json({email: "Email already exists"});}
-			// else {
-			// 	const newUser = new User({
-			// 		"local.password": req.body.password,
-			//         "local.useremail": req.body.email,
-			//         username: req.body.name
-			// 	});
-			// 	newUser
-			// 		.save()
-			// 		.then(user=>res.json(user))
-			// 		.catch(err=>res.json(err));
-				
-			// }
-	});
-});
 // router.post("/register", (req,res)=>{
 	
 // 	const { errors, isValid } = validateRegisterInput(req.body);
@@ -109,10 +55,10 @@ router.post("/register", (req,res)=>{
 // 					.save()
 					
 					
-// 					.then(user=>sendEmail(user.local.useremail, templates.confirmed(user._id)))
+// 					//.then(user=>sendEmail(user.local.useremail, templates.confirmed(user._id)))
 					
-// 					.then(()=>console.log("final process"))
-// 					.then(()=>res.json({msg:messages.confirm}))
+// 					.then(user=>res.json(user))
+// 					//.then(()=>res.json({msg:messages.confirm}))
 // 					.catch(err=>res.json(err));
 // 		        // User.create({ email })
 // 		        //   .then(newUser => sendEmail(newUser.email, templates.confirm(newUser._id)))
@@ -138,35 +84,93 @@ router.post("/register", (req,res)=>{
 // 			// }
 // 	});
 // });
-// router.get("/register/confirm/:id", (req,res)=>{
-// 	const {id} = req.params;
+router.post("/register", (req,res)=>{
+	//Validation Check
+	const { errors, isValid } = validateRegisterInput(req.body);
+	if (!isValid) {
+    return res.status(400).json(errors);
+  	}
 
-// 	User.findById(id)
-//     .then(user => {
 
-//       // A user with that id does not exist in the DB. Perhaps some tricky 
-//       // user tried to go to a different url than the one provided in the 
-//       // confirmation email.
-//       if (!user) {
-//         res.json({ msg: messages.couldNotFind })
-//       }
+	//Store User info		
+	User.findOne({ "local.useremail": req.body.email })
+		.then(user=>{
+			if (!user) {
+				
+				
+				const newUser = new User({
+					"local.password": req.body.password,
+			        "local.useremail": req.body.email,
+			        username: req.body.name,
+			        
+				});
+				
+				newUser
+					.save()
+					.then(user=>sendEmail(user.local.useremail, templates.confirmed(user._id)))					
+					.then(()=>console.log("final process"))
+					.then(()=>res.json({msg:messages.confirm}))
+					.catch(err=>res.json(err));
+		        // User.create({ email })
+		        //   .then(newUser => sendEmail(newUser.email, templates.confirm(newUser._id)))
+		        //   .then(() => res.json({ msg: msgs.confirm }))
+		        //   .catch(err => console.log(err))
+		      }
+		    else if (user && !user.confrim) {
+		    	sendEmail(user.local.useremail, templates.confirmed(user._id))
+		    	.then(()=>res.json({msg: messages.resend}))
+		    	.catch(err=>res.json(err))
+		    }
+			else {
+			console.log('already exitst') 
+				return res.status(400).json({email: "Email already exists"});
+			}
+			// else {
+			// 	const newUser = new User({
+			// 		"local.password": req.body.password,
+			//         "local.useremail": req.body.email,
+			//         username: req.body.name
+			// 	});
+			// 	newUser
+			// 		.save()
+			// 		.then(user=>res.json(user))
+			// 		.catch(err=>res.json(err));
+				
+			// }
+	});
+});
+router.post("/register/confirm/:id", (req,res)=>{
+	const {id} = req.params;
+
+	User.findById(id)
+    .then(user => {
+    	console.log(user)
+      // A user with that id does not exist in the DB. Perhaps some tricky 
+      // user tried to go to a different url than the one provided in the 
+      // confirmation email.
+      if (!user) {
+
+        res.json({ msg: messages.couldNotFind })
+      }
       
-//       // The user exists but has not been confirmed. We need to confirm this 
-//       // user and let them know their email address has been confirmed.
-//       else if (user && !user.confirmed) {
-//         User.findByIdAndUpdate(id, { confirm: true })
-//           .then(() => res.json({ msg: messages.confirmed }))
-//           .catch(err => console.log(err))
-//       }
+      // The user exists but has not been confirmed. We need to confirm this 
+      // user and let them know their email address has been confirmed.
+      else if (user && !user.confirmed) {
 
-//       // The user has already confirmed this email address.
-//       else  {
-//         res.json({ msg: msgs.alreadyConfirmed })
-//       }
+        User.findByIdAndUpdate(id, { confirm: true })
+          .then(() => res.json({ msg: messages.confirmed }))
+          .catch(err => console.log(err))
+      }
 
-//     })
-//     .catch(err => console.log(err))
-// })
+      // The user has already confirmed this email address.
+      else  {
+      	console.log("alreadyConfirmed")
+        res.json({ msg: msgs.alreadyConfirmed })
+      }
+
+    })
+    .catch(err => console.log(err))
+})
 router.get("/error", (req,res)=>{
 	console.log("accept error")
 	console.log(req)

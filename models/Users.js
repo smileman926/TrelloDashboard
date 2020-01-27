@@ -10,7 +10,7 @@ const UserSchema = new Schema({
   },
   local: {
     password: { type: String, unique: false, required: false },
-    useremail: { type: String, unique: true, required: true}
+    useremail: { type: String, unique: false, required: false}
   },
   confirm: {type: Boolean, default: false},
 

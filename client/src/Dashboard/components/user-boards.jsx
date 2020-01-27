@@ -93,6 +93,10 @@ function UserBoard(props) {
         };
         const visible = true;
         
+        const [sidestarBoards, setSidestarBoards] = React.useState();
+        const [sideBoards, setSideBoards] = React.useState();
+        const [siderecBoards, setSiderecBoards] = React.useState();
+
         const [selectedValue, setSelectedValue] = React.useState("https://raw.githubusercontent.com/Anthony-genius/WebDreamTrelloAssets/master/trello-theme-img/theme1.jpg");
         const [modalTitle, setModalTitle] = React.useState('')
         const [btnClass, setBtnClass] = React.useState(true)
@@ -129,7 +133,9 @@ function UserBoard(props) {
                             else if(data.pureBoards.length==0) {
                                 return(<h3>No Data</h3>)
                             }
-                            
+                            setSideBoards(data)
+                            console.log("sideboards==>")
+                            console.log(sideBoards)
                                 return (
                                     <CardOverview>
                                     {data.pureBoards.filter(board=>board.isStarred==true).map((board, index) => (
@@ -161,7 +167,9 @@ function UserBoard(props) {
                             else if(data.recentBoards.length==0) {
                                 return(<h3>No Data</h3>)
                             }
-                            
+                            setSiderecBoards(data)
+                            console.log("recsideboards==>")
+                            console.log(siderecBoards)
                                 return (
                                     <CardOverview>
                                     {data.recentBoards.map((board, index) => (

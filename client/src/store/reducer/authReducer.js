@@ -3,7 +3,8 @@ const isEmpty = require("is-empty");
 
 const initState = {
 	user: [],
-	isAuthenticated: false
+	isAuthenticated: false,
+	message: ''
 }
 
 export default function authReducer(state=initState, action) {
@@ -16,6 +17,11 @@ export default function authReducer(state=initState, action) {
 				...state,
 				isAuthenticated: !isEmpty(action.payload),
 				user: action.payload
+			}
+		case actionTypes.GET_MSG:
+			return {
+				...state,
+				message: action.payload
 			}
 			
 		default:
