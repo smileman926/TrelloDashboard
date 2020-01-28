@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useReducer, useEffect} from "react"
 import styled from "styled-components";
 import AccessTimeIcon from "@material-ui/icons/AccessTime";
 //import {StarBorder} from "@material-ui/icons/StarBorder";
@@ -18,7 +18,11 @@ import Radio from '@material-ui/core/Radio';
 import { Mutation } from 'react-apollo';
 import { Link } from "react-router-dom";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import sideReducer from "../../store/reducer/sideReducer"
 // import {addInfo} from "../../store/action/actions"
+const initState = {
+    boards: []
+    }
 
 const CardOverview = styled.div`
     display: grid;
@@ -80,6 +84,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 function UserBoard(props) {
+    const DISPLAY_SIDE = "DISPLAY_SIDE"
         const classes = useStyles();
         // const {starred, recent, personal } = props.dashs
         const [open, setOpen] = React.useState(false);
@@ -93,9 +98,27 @@ function UserBoard(props) {
         };
         const visible = true;
         
-        const [sidestarBoards, setSidestarBoards] = React.useState();
+        // const [sidestarBoards, setSidestarBoards] = React.useState();
         const [sideBoards, setSideBoards] = React.useState();
-        const [siderecBoards, setSiderecBoards] = React.useState();
+        // const [siderecBoards, setSiderecBoards] = React.useState();
+        const [state, dispatch] = useReducer(sideReducer, initState);
+        console.log("sideddd")
+        console.log(sideBoards)
+        // useEffect(() => {
+        //     dispatch({type: DISPLAY_SIDE, payload: sideBoards})
+        // });
+        // useEffect(
+        //     () => {
+        //         return () => {
+        //         console.log("sideBoards");
+        //         console.log(sideBoards);
+        //             // debugger
+        //             dispatch({type: DISPLAY_SIDE, payload: sideBoards})
+        //             // debugger
+        //             console.log("baz");
+        //           }
+        //         }
+        //       );
 
         const [selectedValue, setSelectedValue] = React.useState("https://raw.githubusercontent.com/Anthony-genius/WebDreamTrelloAssets/master/trello-theme-img/theme1.jpg");
         const [modalTitle, setModalTitle] = React.useState('')
@@ -133,9 +156,9 @@ function UserBoard(props) {
                             else if(data.pureBoards.length==0) {
                                 return(<h3>No Data</h3>)
                             }
-                            setSideBoards(data)
-                            console.log("sideboards==>")
-                            console.log(sideBoards)
+                            
+                            // console.log("sideboards==>")
+                            // console.log(sideBoards)
                                 return (
                                     <CardOverview>
                                     {data.pureBoards.filter(board=>board.isStarred==true).map((board, index) => (
@@ -167,9 +190,9 @@ function UserBoard(props) {
                             else if(data.recentBoards.length==0) {
                                 return(<h3>No Data</h3>)
                             }
-                            setSiderecBoards(data)
-                            console.log("recsideboards==>")
-                            console.log(siderecBoards)
+                            // setSiderecBoards(data)
+                            // console.log("recsideboards==>")
+                            // console.log(siderecBoards)
                                 return (
                                     <CardOverview>
                                     {data.recentBoards.map((board, index) => (
@@ -200,7 +223,7 @@ function UserBoard(props) {
                             else if(data.pureBoards.length==0) {
                                 return(<h3>No Data</h3>)
                             }
-                            
+                            setSideBoards(data)
                                 return (
                                     <div>
                                     <CardOverview>
