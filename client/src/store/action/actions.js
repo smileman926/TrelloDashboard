@@ -61,6 +61,7 @@ export const googleUser = ()=> {
 	
 }
 export const loginUser = (userData) => {
+	console.log(SERVER_PORT)
 	return dispatch => {
 	axios
 		.post(`${SERVER_PORT}/api/users/login`, userData)

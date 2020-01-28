@@ -8,7 +8,7 @@ const strategy = new LocalStrategy(
 	function(username, password, done) {
 		console.log("passport local accept")
 		User.findOne({ "local.useremail": username }, (err, userMatch) => {
-			if (userMatch.confirm) {
+			
 				if (err) {
 					console.log("=====error=====")
 					return done(err)
@@ -17,6 +17,7 @@ const strategy = new LocalStrategy(
 					console.log("Incorrect Email")
 					return done(null, false, { messageEmail: "Incorrect Email message" })
 				}
+			if (userMatch.confirm) {
 				if (!userMatch.checkPassword(password)) {
 					console.log("Incorrect Password")
 					return done(null, false, { messagePwd: "Incorrect password message" })
