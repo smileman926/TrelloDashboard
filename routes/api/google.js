@@ -4,6 +4,7 @@ const passport = require("../../passport");
 const jwt = require("jsonwebtoken");
 const localStorage = require('localStorage')
 var bs = require('browser-storage')
+const { CLIENT_ORIGIN } = require("../../config")
 
 router.get("/auth/google/sign", passport.authenticate("google",{scope:["profile"]}),(req,res)=>{
 	console.log("req====>")
@@ -26,7 +27,7 @@ router.get(
 	console.log(tokenUrl)
 	
 	
-	res.redirect(`http://localhost:3000/?token=${token}`);
+	res.redirect(`${CLIENT_ORIGIN}/?token=${token}`);
 });
 	// jwt.sign(
 	// 		payload,

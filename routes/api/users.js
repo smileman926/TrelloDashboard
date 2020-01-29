@@ -16,6 +16,8 @@ const messages = require("../../emailConfirm/messages")
 const User = require("../../models/Users");
 const templates = require("../../emailConfirm/templatesEmail");
 const sendEmail = require("../../emailConfirm/sendEmail")
+
+const {CLIENT_ORIGIN} = require("../../config")
 // router.get("/google", passport.authenticate("google", { scope: ["profile"] }))
 // router.get(
 // 	"/google/callback",
@@ -179,6 +181,10 @@ router.get("/error", (req,res)=>{
 router.post(
 	"/login",
 	(req, res, next) =>{
+		console.log("process env========>")
+		console.log(process.env)
+		console.log(CLIENT_ORIGIN)
+		console.log(process.env.NODE_ENV)
 		console.log(req.body)
 		console.log("================")
 		const { errors, isValid } = validateLoginInput(req.body);

@@ -27,7 +27,9 @@
   "engines": {
     "node": "10.16.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "cross-env": "^7.0.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "heroku-postbuild": "npm run fixture && cd client && npm install --only=dev && npm install && npm run build",
