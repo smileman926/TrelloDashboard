@@ -63,7 +63,7 @@ export const googleUser = ()=> {
 export const loginUser = (userData) => {
 	return dispatch => {
 	axios
-		.get(`${SERVER_PORT}/api/users/login`, userData)
+		.post(`${SERVER_PORT}/api/users/login`, userData)
 		.then(res=>{
 			const {token} = res.data;
 			localStorage.setItem("jwtToken", token);

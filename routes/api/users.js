@@ -178,7 +178,7 @@ router.get("/error", (req,res)=>{
 	console.log(req)
 	console.log(res)
 })
-router.get(
+router.post(
 	"/login",
 	(req, res, next) =>{
 		console.log("process env========>")
