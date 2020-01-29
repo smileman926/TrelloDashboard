@@ -184,7 +184,7 @@ router.get(
 		console.log("process env========>")
 		console.log(process.env)
 		console.log(CLIENT_ORIGIN)
-		console.log(process.env.NODE_ENV)
+
 		console.log(req.body)
 		console.log("================")
 		const { errors, isValid } = validateLoginInput(req.body);
