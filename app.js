@@ -73,17 +73,17 @@ mongoose.set('debug', true);
 //     },
 //   });
 // });
-
-    // app.get('/*', (req, res) => {
-    // res.sendFile(path.join(__dirname,'client','build', 'index.html'));
-    // });
+if (process.env.NODE_ENV === 'production') {
+    app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname,'client','build', 'index.html'));
+    });
   // const path = require('path')
   // console.log('YOU ARE IN THE PRODUCTION ENV')
   // app.use('/static', express.static(path.join(__dirname, '../build/static')))
   // app.get('/', (req, res) => {
   //   res.sendFile(path.join(__dirname, '../build/'))
   // })
-
+}
 // app.get('/*', (req, res) => {
 //   res.sendFile(path.join(__dirname,'client','build', 'index.html'));
 // });
