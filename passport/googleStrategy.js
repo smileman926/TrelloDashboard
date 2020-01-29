@@ -1,5 +1,6 @@
 const GoogleStrategy = require("passport-google-oauth20").Strategy
 const User = require("../models/Users")
+const {GOOGLE_INFO} = require("../config")
 // "google": {
 // 		"clientID": "585604580890-dp9nlh79gjpc6d9cttu6cpn84hs2vkj9.apps.googleusercontent.com",
 // 		"clientSecret": "APqKhLgQGpu54vJtT5vgGayg",
@@ -7,12 +8,7 @@ const User = require("../models/Users")
 // 		"profileFields": ["id", "displayName", "photos"]
 // 	},
 const strategy = new GoogleStrategy(
-	{
-		clientID: "710107340160-ngao9v87074vtfftqm8mpctgq5vqbika.apps.googleusercontent.com",
-		clientSecret: "K04JF04w32tv5JqV3f1PH411",
-		callbackURL: "/auth/google/callback"
-		
-	},
+	GOOGLE_INFO,
 	(token, tokenSecret, profile, done)=> {
 		// testing
 		console.log("===== GOOGLE PROFILE =======")
