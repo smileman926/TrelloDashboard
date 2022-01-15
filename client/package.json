@@ -19,7 +19,7 @@
     "jquery": "^3.4.1",
     "jsonwebtoken": "^8.5.1",
     "jwt-decode": "^2.2.0",
-    "marked": "^0.8.0",
+    "marked": "^4.0.10",
     "mdbreact": "^4.24.0",
     "node-sass": "^4.13.0",
     "query-string": "^6.10.1",
